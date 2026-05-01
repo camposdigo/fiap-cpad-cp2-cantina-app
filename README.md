@@ -51,7 +51,7 @@ Pré-requisitos:
 Passo a passo:
 
 ```bash
-git clone https://github.com/usuario/fiap-cpad-cp2-cantina-app
+git clone https://github.com/camposdigo/fiap-cpad-cp2-cantina-app
 cd fiap-cpad-cp2-cantina-app
 npm install
 npx expo start
