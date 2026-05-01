@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "Cantina FIAP",
+    "slug": "fiap-cpad-cp2-cantina-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#F7F3EA"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {}
+  }
+}
