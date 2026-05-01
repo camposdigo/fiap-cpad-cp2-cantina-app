@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: colors.surface,
     borderColor: colors.border,
-    borderRadius: 8,
+    borderRadius: 0,
     borderWidth: 1,
     flexDirection: "row",
     gap: 14,
@@ -86,8 +86,10 @@ const styles = StyleSheet.create({
   },
   avatar: {
     alignItems: "center",
-    backgroundColor: colors.primary,
-    borderRadius: 8,
+    backgroundColor: "transparent",
+    borderColor: colors.primary,
+    borderRadius: 0,
+    borderWidth: 1,
     height: 58,
     justifyContent: "center",
     width: 58
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
   metricCard: {
     backgroundColor: colors.surface,
     borderColor: colors.border,
-    borderRadius: 8,
+    borderRadius: 0,
     borderWidth: 1,
     flex: 1,
     padding: 16
@@ -131,7 +133,7 @@ const styles = StyleSheet.create({
   panel: {
     backgroundColor: colors.surface,
     borderColor: colors.border,
-    borderRadius: 8,
+    borderRadius: 0,
     borderWidth: 1,
     gap: 12,
     padding: 16

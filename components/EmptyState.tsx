@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: colors.surface,
     borderColor: colors.border,
-    borderRadius: 8,
+    borderRadius: 0,
     borderWidth: 1,
     gap: 8,
     padding: 22

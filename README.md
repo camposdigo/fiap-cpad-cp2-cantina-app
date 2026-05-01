@@ -28,6 +28,7 @@ O CP2 evolui o MVP do CP1 com autenticação local, sessão persistida, carrinho
 - Confirmação de pedido e histórico persistido.
 - Tela de lista vazia para busca sem resultado e histórico sem pedidos.
 - Feedback visual de loading, sucesso e erros inline.
+- Interface visual inspirada no portal da FIAP, com fundo escuro, rosa institucional e componentes lineares.
 
 ## Tecnologias
 

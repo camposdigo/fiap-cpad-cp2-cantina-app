@@ -19,6 +19,12 @@ export default function TabsLayout() {
         tabBarStyle: {
           backgroundColor: colors.surface,
           borderTopColor: colors.border
+        },
+        tabBarLabelStyle: {
+          fontSize: 11,
+          fontWeight: "900",
+          letterSpacing: 0.8,
+          textTransform: "uppercase"
         }
       }}
     >

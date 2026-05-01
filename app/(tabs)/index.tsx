@@ -254,13 +254,14 @@ const styles = StyleSheet.create({
     paddingBottom: 28
   },
   hero: {
-    backgroundColor: "#F2B84B",
+    backgroundColor: colors.dark,
+    borderBottomColor: colors.primary,
+    borderBottomWidth: 1,
     minHeight: 240,
     justifyContent: "flex-end",
     marginBottom: 18
   },
   heroOverlay: {
-    backgroundColor: "rgba(247, 243, 234, 0.38)",
     flex: 1,
     justifyContent: "space-between",
     padding: 22
@@ -271,19 +272,22 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   brand: {
-    color: colors.text,
+    color: colors.primary,
     fontSize: 24,
-    fontWeight: "900"
+    fontWeight: "300",
+    letterSpacing: 3
   },
   subtitle: {
-    color: "#3E342C",
+    color: colors.muted,
     fontSize: 14,
     marginTop: 2
   },
   cartBadge: {
     alignItems: "center",
     backgroundColor: colors.surface,
-    borderRadius: 8,
+    borderColor: colors.border,
+    borderWidth: 1,
+    borderRadius: 0,
     elevation: 2,
     flexDirection: "row",
     gap: 6,
@@ -296,17 +300,18 @@ const styles = StyleSheet.create({
     fontWeight: "900"
   },
   heroTitle: {
-    color: colors.text,
-    fontSize: 32,
-    fontWeight: "900",
-    lineHeight: 38,
+    color: colors.primary,
+    fontSize: 30,
+    fontWeight: "300",
+    letterSpacing: 2.5,
+    lineHeight: 40,
     maxWidth: 310
   },
   successBox: {
     alignItems: "center",
-    backgroundColor: "#E8F5ED",
-    borderColor: "#B8E0C9",
-    borderRadius: 8,
+    backgroundColor: "#0E2017",
+    borderColor: colors.success,
+    borderRadius: 0,
     borderWidth: 1,
     flexDirection: "row",
     gap: 8,
@@ -324,7 +329,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: colors.surface,
     borderColor: colors.border,
-    borderRadius: 8,
+    borderRadius: 0,
     borderWidth: 1,
     flexDirection: "row",
     gap: 10,
@@ -343,15 +348,15 @@ const styles = StyleSheet.create({
     paddingVertical: 16
   },
   categoryButton: {
-    backgroundColor: colors.surface,
+    backgroundColor: "transparent",
     borderColor: colors.border,
-    borderRadius: 8,
+    borderRadius: 0,
     borderWidth: 1,
     paddingHorizontal: 16,
     paddingVertical: 10
   },
   categoryActive: {
-    backgroundColor: colors.primary,
+    backgroundColor: "transparent",
     borderColor: colors.primary
   },
   categoryText: {
@@ -360,7 +365,7 @@ const styles = StyleSheet.create({
     fontWeight: "800"
   },
   categoryTextActive: {
-    color: colors.lightText
+    color: colors.primary
   },
   sectionHeader: {
     alignItems: "center",
@@ -387,8 +392,8 @@ const styles = StyleSheet.create({
   },
   productCard: {
     backgroundColor: colors.surface,
-    borderColor: "#E7DCD0",
-    borderRadius: 8,
+    borderColor: colors.border,
+    borderRadius: 0,
     borderWidth: 1,
     flexDirection: "row",
     gap: 12,
@@ -412,7 +417,7 @@ const styles = StyleSheet.create({
     fontWeight: "900"
   },
   productDescription: {
-    color: "#5C514A",
+    color: colors.muted,
     fontSize: 14,
     lineHeight: 20
   },
@@ -427,13 +432,15 @@ const styles = StyleSheet.create({
     fontWeight: "800"
   },
   tag: {
-    backgroundColor: colors.warning,
-    borderRadius: 6,
+    backgroundColor: "transparent",
+    borderColor: colors.primary,
+    borderRadius: 0,
+    borderWidth: 1,
     paddingHorizontal: 8,
     paddingVertical: 4
   },
   tagText: {
-    color: colors.text,
+    color: colors.primary,
     fontSize: 11,
     fontWeight: "900"
   },
@@ -448,14 +455,16 @@ const styles = StyleSheet.create({
   },
   addButton: {
     alignItems: "center",
-    backgroundColor: colors.accent,
-    borderRadius: 8,
+    backgroundColor: colors.primary,
+    borderRadius: 0,
     height: 38,
     justifyContent: "center",
     width: 38
   },
   checkoutPanel: {
     backgroundColor: colors.dark,
+    borderColor: colors.primary,
+    borderWidth: 1,
     gap: 14,
     marginHorizontal: 18,
     marginTop: 4,
@@ -467,12 +476,12 @@ const styles = StyleSheet.create({
     fontWeight: "900"
   },
   checkoutSubtitle: {
-    color: "#D9CBBE",
+    color: colors.muted,
     fontSize: 14,
     marginTop: 3
   },
   emptyCart: {
-    color: "#D9CBBE",
+    color: colors.muted,
     fontSize: 14
   },
   cartItem: {
@@ -493,7 +502,7 @@ const styles = StyleSheet.create({
     fontWeight: "800"
   },
   cartItemPrice: {
-    color: "#D9CBBE",
+    color: colors.muted,
     fontSize: 13,
     marginTop: 2
   },
@@ -504,8 +513,10 @@ const styles = StyleSheet.create({
   },
   quantityButton: {
     alignItems: "center",
-    backgroundColor: colors.background,
-    borderRadius: 8,
+    backgroundColor: colors.surface,
+    borderColor: colors.border,
+    borderRadius: 0,
+    borderWidth: 1,
     height: 30,
     justifyContent: "center",
     width: 30
@@ -526,7 +537,7 @@ const styles = StyleSheet.create({
     paddingTop: 14
   },
   totalLabel: {
-    color: "#D9CBBE",
+    color: colors.muted,
     fontSize: 14,
     fontWeight: "800"
   },
@@ -537,8 +548,10 @@ const styles = StyleSheet.create({
   },
   checkoutButton: {
     alignItems: "center",
-    backgroundColor: colors.primary,
-    borderRadius: 8,
+    backgroundColor: "transparent",
+    borderColor: colors.primary,
+    borderRadius: 0,
+    borderWidth: 1,
     flexDirection: "row",
     gap: 8,
     justifyContent: "center",
@@ -548,7 +561,7 @@ const styles = StyleSheet.create({
     opacity: 0.45
   },
   checkoutButtonText: {
-    color: colors.lightText,
+    color: colors.primary,
     fontSize: 15,
     fontWeight: "900"
   }

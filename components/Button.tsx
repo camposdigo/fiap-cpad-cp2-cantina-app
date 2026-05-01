@@ -38,8 +38,10 @@ export function Button({
 const styles = StyleSheet.create({
   button: {
     alignItems: "center",
-    backgroundColor: colors.primary,
-    borderRadius: 8,
+    backgroundColor: "transparent",
+    borderColor: colors.primary,
+    borderRadius: 0,
+    borderWidth: 1,
     flexDirection: "row",
     gap: 8,
     justifyContent: "center",
@@ -47,17 +49,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16
   },
   secondary: {
-    backgroundColor: colors.accent
+    borderColor: colors.accent
   },
   danger: {
-    backgroundColor: colors.danger
+    borderColor: colors.danger
   },
   disabled: {
     opacity: 0.45
   },
   label: {
-    color: colors.lightText,
-    fontSize: 15,
-    fontWeight: "900"
+    color: colors.primary,
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 2,
+    textTransform: "uppercase"
   }
 });

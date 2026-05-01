@@ -13,9 +13,9 @@ export function Input({ label, error, icon, style, ...props }: InputProps) {
     <View style={styles.wrapper}>
       <Text style={styles.label}>{label}</Text>
       <View style={[styles.inputBox, error ? styles.inputError : null]}>
-        {icon ? <Ionicons name={icon} size={19} color={colors.muted} /> : null}
+        {icon ? <Ionicons name={icon} size={19} color={colors.primary} /> : null}
         <TextInput
-          placeholderTextColor="#82756B"
+          placeholderTextColor="#657277"
           style={[styles.input, style]}
           {...props}
         />
@@ -31,14 +31,16 @@ const styles = StyleSheet.create({
   },
   label: {
     color: colors.text,
-    fontSize: 14,
-    fontWeight: "800"
+    fontSize: 12,
+    fontWeight: "900",
+    letterSpacing: 1.8,
+    textTransform: "uppercase"
   },
   inputBox: {
     alignItems: "center",
-    backgroundColor: colors.surface,
+    backgroundColor: "transparent",
     borderColor: colors.border,
-    borderRadius: 8,
+    borderRadius: 0,
     borderWidth: 1,
     flexDirection: "row",
     gap: 10,

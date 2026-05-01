@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   orderCard: {
     backgroundColor: colors.surface,
     borderColor: colors.border,
-    borderRadius: 8,
+    borderRadius: 0,
     borderWidth: 1,
     gap: 12,
     padding: 16
@@ -117,8 +117,10 @@ const styles = StyleSheet.create({
   },
   status: {
     alignItems: "center",
-    backgroundColor: "#E8F5ED",
-    borderRadius: 8,
+    backgroundColor: "#0E2017",
+    borderColor: colors.success,
+    borderRadius: 0,
+    borderWidth: 1,
     flexDirection: "row",
     gap: 5,
     paddingHorizontal: 9,

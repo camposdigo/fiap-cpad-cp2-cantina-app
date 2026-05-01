@@ -61,12 +61,17 @@ export default function LoginScreen() {
       style={styles.keyboard}
     >
       <ScrollView contentContainerStyle={styles.container}>
+        <View style={styles.decorTop}>
+          <View style={styles.dot} />
+          <View style={styles.tinyDot} />
+          <View style={styles.dot} />
+        </View>
         <View style={styles.header}>
-          <View style={styles.logo}>
-            <Text style={styles.logoText}>CF</Text>
-          </View>
+          <Text style={styles.logoText}>FIAP</Text>
           <Text style={styles.brand}>Cantina FIAP</Text>
-          <Text style={styles.title}>Entre para reservar seu pedido</Text>
+          <Text style={styles.title}>
+            Conecte-se com sua jornada academica
+          </Text>
           <Text style={styles.subtitle}>
             Use seu cadastro para acessar o cardapio e seus pedidos salvos.
           </Text>
@@ -108,6 +113,9 @@ export default function LoginScreen() {
             Cadastre-se
           </Link>
         </Text>
+        <Text style={styles.supportText}>
+          Em caso de duvidas, procure o suporte academico.
+        </Text>
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -121,36 +129,54 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
     flexGrow: 1,
     justifyContent: "center",
-    padding: 22
+    padding: 24
+  },
+  decorTop: {
+    flexDirection: "row",
+    gap: 16,
+    marginBottom: 32,
+    opacity: 0.7
+  },
+  dot: {
+    backgroundColor: colors.text,
+    borderRadius: 3,
+    height: 5,
+    width: 5
+  },
+  tinyDot: {
+    backgroundColor: colors.primary,
+    borderRadius: 2,
+    height: 3,
+    marginTop: 1,
+    width: 3
   },
   header: {
-    gap: 8,
-    marginBottom: 28
-  },
-  logo: {
-    alignItems: "center",
-    backgroundColor: colors.primary,
-    borderRadius: 8,
-    height: 78,
-    justifyContent: "center",
-    marginBottom: 8,
-    width: 78
+    borderBottomColor: colors.border,
+    borderBottomWidth: 1,
+    gap: 12,
+    marginBottom: 28,
+    paddingBottom: 26
   },
   logoText: {
-    color: colors.lightText,
-    fontSize: 28,
-    fontWeight: "900"
+    color: colors.primary,
+    fontSize: 46,
+    fontWeight: "300",
+    letterSpacing: 3
   },
   brand: {
     color: colors.primary,
-    fontSize: 20,
-    fontWeight: "900"
+    fontSize: 13,
+    fontWeight: "900",
+    letterSpacing: 3,
+    textTransform: "uppercase"
   },
   title: {
-    color: colors.text,
-    fontSize: 30,
-    fontWeight: "900",
-    lineHeight: 36
+    color: colors.primary,
+    fontSize: 27,
+    fontWeight: "300",
+    letterSpacing: 3,
+    lineHeight: 36,
+    textTransform: "uppercase"
   },
   subtitle: {
     color: colors.muted,
@@ -174,5 +200,11 @@ const styles = StyleSheet.create({
   link: {
     color: colors.primary,
     fontWeight: "900"
+  },
+  supportText: {
+    color: "#5F6B70",
+    fontSize: 12,
+    marginTop: 32,
+    textAlign: "center"
   }
 });
