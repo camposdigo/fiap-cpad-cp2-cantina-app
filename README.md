@@ -10,7 +10,7 @@ O CP2 evolui o MVP do CP1 com autenticação local, sessão persistida, carrinho
 
 | Nome | RM | GitHub |
 | --- | --- | --- |
-| Rodrigo Campos Cordeiro | RM000000 | [@rodrigo-campos-cordeiro](https://github.com/rodrigo-campos-cordeiro) |
+| Rodrigo Campos Cordeiro | RM566386 | [@rodrigo-campos-cordeiro](https://github.com/camposdigo) |
 
 > Atualize esta tabela com todos os integrantes do grupo antes da entrega.
 
