@@ -136,7 +136,7 @@ export default function CadastroScreen() {
 
         <Text style={styles.footerText}>
           Ja tem cadastro?{" "}
-          <Link href="/(auth)/login" style={styles.link}>
+          <Link href="/login" style={styles.link}>
             Entrar
           </Link>
         </Text>

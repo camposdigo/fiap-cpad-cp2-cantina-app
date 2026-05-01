@@ -1,6 +1,5 @@
 import { Stack } from "expo-router";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { colors } from "../constants/theme";
 import { AppDataProvider } from "../context/AppDataContext";
@@ -27,15 +26,13 @@ function RootNavigator() {
 
 export default function RootLayout() {
   return (
-    <GestureHandlerRootView style={styles.root}>
-      <SafeAreaProvider>
-        <AuthProvider>
-          <AppDataProvider>
-            <RootNavigator />
-          </AppDataProvider>
-        </AuthProvider>
-      </SafeAreaProvider>
-    </GestureHandlerRootView>
+    <SafeAreaProvider style={styles.root}>
+      <AuthProvider>
+        <AppDataProvider>
+          <RootNavigator />
+        </AppDataProvider>
+      </AuthProvider>
+    </SafeAreaProvider>
   );
 }
 

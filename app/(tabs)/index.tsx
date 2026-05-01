@@ -3,7 +3,6 @@ import { useMemo, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
-  ImageBackground,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -62,13 +61,7 @@ export default function MenuScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.page}>
-      <ImageBackground
-        source={{
-          uri: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=1200&q=80"
-        }}
-        imageStyle={styles.heroImage}
-        style={styles.hero}
-      >
+      <View style={styles.hero}>
         <View style={styles.heroOverlay}>
           <View style={styles.header}>
             <View>
@@ -82,7 +75,7 @@ export default function MenuScreen() {
           </View>
           <Text style={styles.heroTitle}>Monte seu pedido antes da fila.</Text>
         </View>
-      </ImageBackground>
+      </View>
 
       {authSuccess ? (
         <Pressable onPress={clearAuthSuccess} style={styles.successBox}>
@@ -261,15 +254,13 @@ const styles = StyleSheet.create({
     paddingBottom: 28
   },
   hero: {
+    backgroundColor: "#F2B84B",
     minHeight: 240,
     justifyContent: "flex-end",
     marginBottom: 18
   },
-  heroImage: {
-    opacity: 0.88
-  },
   heroOverlay: {
-    backgroundColor: "rgba(247, 243, 234, 0.44)",
+    backgroundColor: "rgba(247, 243, 234, 0.38)",
     flex: 1,
     justifyContent: "space-between",
     padding: 22

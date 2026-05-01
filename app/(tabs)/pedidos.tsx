@@ -3,7 +3,7 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import { EmptyState } from "../../components/EmptyState";
 import { colors } from "../../constants/theme";
 import { useAppData } from "../../context/AppDataContext";
-import { formatCurrency } from "../../utils/format";
+import { formatCurrency, formatDateTime } from "../../utils/format";
 
 export default function PedidosScreen() {
   const { orders } = useAppData();
@@ -34,7 +34,7 @@ export default function PedidosScreen() {
                 <View>
                   <Text style={styles.orderTitle}>Pedido #{item.id.slice(-4)}</Text>
                   <Text style={styles.orderDate}>
-                    {new Date(item.createdAt).toLocaleString("pt-BR")}
+                    {formatDateTime(item.createdAt)}
                   </Text>
                 </View>
                 <View style={styles.status}>

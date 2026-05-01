@@ -2,7 +2,6 @@ import { Link } from "expo-router";
 import { useMemo, useState } from "react";
 import {
   ActivityIndicator,
-  Image,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -63,12 +62,9 @@ export default function LoginScreen() {
     >
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.header}>
-          <Image
-            source={{
-              uri: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=300&q=80"
-            }}
-            style={styles.logo}
-          />
+          <View style={styles.logo}>
+            <Text style={styles.logoText}>CF</Text>
+          </View>
           <Text style={styles.brand}>Cantina FIAP</Text>
           <Text style={styles.title}>Entre para reservar seu pedido</Text>
           <Text style={styles.subtitle}>
@@ -108,7 +104,7 @@ export default function LoginScreen() {
 
         <Text style={styles.footerText}>
           Ainda nao tem conta?{" "}
-          <Link href="/(auth)/cadastro" style={styles.link}>
+          <Link href="/cadastro" style={styles.link}>
             Cadastre-se
           </Link>
         </Text>
@@ -132,10 +128,18 @@ const styles = StyleSheet.create({
     marginBottom: 28
   },
   logo: {
+    alignItems: "center",
+    backgroundColor: colors.primary,
     borderRadius: 8,
     height: 78,
+    justifyContent: "center",
     marginBottom: 8,
     width: 78
+  },
+  logoText: {
+    color: colors.lightText,
+    fontSize: 28,
+    fontWeight: "900"
   },
   brand: {
     color: colors.primary,

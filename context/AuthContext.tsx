@@ -71,7 +71,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       await AsyncStorage.setItem(SESSION_KEY, JSON.stringify(nextUser));
       setUser(nextUser);
       setSuccessMessage("Cadastro realizado com sucesso");
-      router.replace("/(tabs)");
+      router.replace("/");
     } finally {
       setLoading(false);
     }
@@ -94,7 +94,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       await AsyncStorage.setItem(SESSION_KEY, JSON.stringify(foundUser));
       setUser(foundUser);
       setSuccessMessage("Login realizado com sucesso");
-      router.replace("/(tabs)");
+      router.replace("/");
     } finally {
       setLoading(false);
     }
@@ -106,7 +106,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       await AsyncStorage.removeItem(SESSION_KEY);
       setUser(null);
       setSuccessMessage("");
-      router.replace("/(auth)/login");
+      router.replace("/login");
     } finally {
       setLoading(false);
     }
