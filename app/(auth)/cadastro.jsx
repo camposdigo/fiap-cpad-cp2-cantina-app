@@ -28,13 +28,13 @@ export default function CadastroScreen() {
       name: name.trim().length === 0 ? "O nome completo e obrigatorio" : "",
       email:
         email.trim().length === 0
-          ? "O e-mail e obrigatorio"
+          ? "O e-mail é obrigatório!"
           : !isValidEmail(email)
-            ? "Informe um e-mail valido"
+            ? "Informe um e-mail válido"
             : "",
       password:
         password.length === 0
-          ? "A senha e obrigatoria"
+          ? "A senha é obrigatória!"
           : password.length < 6
             ? "A senha deve ter pelo menos 6 caracteres"
             : "",
