@@ -1,7 +1,7 @@
-export const formatCurrency = (value: number) =>
+export const formatCurrency = (value) =>
   `R$ ${value.toFixed(2).replace(".", ",")}`;
 
-export const formatDateTime = (isoDate: string) => {
+export const formatDateTime = (isoDate) => {
   const date = new Date(isoDate);
   const day = String(date.getDate()).padStart(2, "0");
   const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -12,5 +12,5 @@ export const formatDateTime = (isoDate: string) => {
   return `${day}/${month}/${year} ${hour}:${minutes}`;
 };
 
-export const isValidEmail = (email: string) =>
+export const isValidEmail = (email) =>
   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());

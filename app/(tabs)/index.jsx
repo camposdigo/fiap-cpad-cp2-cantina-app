@@ -11,7 +11,7 @@ import {
   View
 } from "react-native";
 import { EmptyState } from "../../components/EmptyState";
-import { categories, Category, products } from "../../data/products";
+import { categories, products } from "../../data/products";
 import { colors } from "../../constants/theme";
 import { useAppData } from "../../context/AppDataContext";
 import { useAuth } from "../../context/AuthContext";
@@ -29,7 +29,7 @@ export default function MenuScreen() {
     confirmOrder,
     clearSuccess
   } = useAppData();
-  const [selectedCategory, setSelectedCategory] = useState<Category>("Todos");
+  const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [query, setQuery] = useState("");
 
   const filteredProducts = useMemo(() => {

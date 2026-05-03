@@ -1,18 +1,6 @@
-export type Category = "Todos" | "Lanches" | "Bebidas" | "Saudaveis";
+export const categories = ["Todos", "Lanches", "Bebidas", "Saudaveis"];
 
-export type Product = {
-  id: string;
-  name: string;
-  description: string;
-  category: Exclude<Category, "Todos">;
-  price: number;
-  prepTime: string;
-  highlight?: boolean;
-};
-
-export const categories: Category[] = ["Todos", "Lanches", "Bebidas", "Saudaveis"];
-
-export const products: Product[] = [
+export const products = [
   {
     id: "1",
     name: "Wrap Frango Tech",

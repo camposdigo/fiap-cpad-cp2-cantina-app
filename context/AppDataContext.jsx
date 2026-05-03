@@ -1,35 +1,21 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   createContext,
-  ReactNode,
   useContext,
   useEffect,
   useMemo,
   useState
 } from "react";
 import { products } from "../data/products";
-import { Cart, Order } from "../types/app";
 
 const CART_KEY = "@cantina_fiap:cart";
 const ORDERS_KEY = "@cantina_fiap:orders";
 
-type AppDataContextValue = {
-  cart: Cart;
-  orders: Order[];
-  loading: boolean;
-  successMessage: string;
-  addToCart: (productId: string) => void;
-  removeFromCart: (productId: string) => void;
-  clearCart: () => Promise<void>;
-  confirmOrder: () => Promise<void>;
-  clearSuccess: () => void;
-};
+const AppDataContext = createContext(null);
 
-const AppDataContext = createContext<AppDataContextValue | null>(null);
-
-export function AppDataProvider({ children }: { children: ReactNode }) {
-  const [cart, setCart] = useState<Cart>({});
-  const [orders, setOrders] = useState<Order[]>([]);
+export function AppDataProvider({ children }) {
+  const [cart, setCart] = useState({});
+  const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [successMessage, setSuccessMessage] = useState("");
 
@@ -42,11 +28,11 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
         ]);
 
         if (storedCart) {
-          setCart(JSON.parse(storedCart) as Cart);
+          setCart(JSON.parse(storedCart));
         }
 
         if (storedOrders) {
-          setOrders(JSON.parse(storedOrders) as Order[]);
+          setOrders(JSON.parse(storedOrders));
         }
       } finally {
         setLoading(false);
@@ -68,14 +54,14 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
     }
   }, [loading, orders]);
 
-  function addToCart(productId: string) {
+  function addToCart(productId) {
     setCart((currentCart) => ({
       ...currentCart,
       [productId]: (currentCart[productId] ?? 0) + 1
     }));
   }
 
-  function removeFromCart(productId: string) {
+  function removeFromCart(productId) {
     setCart((currentCart) => {
       const quantity = currentCart[productId] ?? 0;
       if (quantity <= 1) {
@@ -113,7 +99,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       0
     );
 
-    const order: Order = {
+    const order = {
       id: String(Date.now()),
       createdAt: new Date().toISOString(),
       items,

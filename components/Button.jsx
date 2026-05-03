@@ -2,21 +2,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { colors } from "../constants/theme";
 
-type ButtonProps = {
-  label: string;
-  icon?: keyof typeof Ionicons.glyphMap;
-  onPress: () => void;
-  disabled?: boolean;
-  variant?: "primary" | "secondary" | "danger";
-};
-
 export function Button({
   label,
   icon,
   onPress,
   disabled = false,
   variant = "primary"
-}: ButtonProps) {
+}) {
   return (
     <TouchableOpacity
       accessibilityRole="button"

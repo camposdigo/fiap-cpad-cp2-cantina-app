@@ -2,36 +2,24 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 import {
   createContext,
-  ReactNode,
   useContext,
   useEffect,
   useMemo,
   useState
 } from "react";
-import { User } from "../types/app";
 
 const USERS_KEY = "@cantina_fiap:users";
 const SESSION_KEY = "@cantina_fiap:session";
 
-type AuthContextValue = {
-  user: User | null;
-  loading: boolean;
-  successMessage: string;
-  register: (data: Omit<User, "id">) => Promise<void>;
-  login: (email: string, password: string) => Promise<void>;
-  logout: () => Promise<void>;
-  clearSuccess: () => void;
-};
-
-const AuthContext = createContext<AuthContextValue | null>(null);
+const AuthContext = createContext(null);
 
 async function readUsers() {
   const storedUsers = await AsyncStorage.getItem(USERS_KEY);
-  return storedUsers ? (JSON.parse(storedUsers) as User[]) : [];
+  return storedUsers ? JSON.parse(storedUsers) : [];
 }
 
-export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [successMessage, setSuccessMessage] = useState("");
 
@@ -40,7 +28,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       try {
         const storedSession = await AsyncStorage.getItem(SESSION_KEY);
         if (storedSession) {
-          setUser(JSON.parse(storedSession) as User);
+          setUser(JSON.parse(storedSession));
         }
       } finally {
         setLoading(false);
@@ -50,7 +38,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     loadSession();
   }, []);
 
-  async function register(data: Omit<User, "id">) {
+  async function register(data) {
     setLoading(true);
     try {
       const users = await readUsers();
@@ -62,7 +50,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         throw new Error("Este e-mail ja esta cadastrado");
       }
 
-      const nextUser: User = {
+      const nextUser = {
         ...data,
         id: String(Date.now())
       };
@@ -77,7 +65,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  async function login(email: string, password: string) {
+  async function login(email, password) {
     setLoading(true);
     try {
       const users = await readUsers();

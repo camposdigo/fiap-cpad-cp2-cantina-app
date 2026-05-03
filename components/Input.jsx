@@ -1,14 +1,8 @@
 import { Ionicons } from "@expo/vector-icons";
-import { StyleSheet, Text, TextInput, TextInputProps, View } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import { colors } from "../constants/theme";
 
-type InputProps = TextInputProps & {
-  label: string;
-  error?: string;
-  icon?: keyof typeof Ionicons.glyphMap;
-};
-
-export function Input({ label, error, icon, style, ...props }: InputProps) {
+export function Input({ label, error, icon, style, ...props }) {
   return (
     <View style={styles.wrapper}>
       <Text style={styles.label}>{label}</Text>

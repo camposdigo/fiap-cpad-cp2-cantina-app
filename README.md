@@ -32,9 +32,9 @@ O CP2 evolui o MVP do CP1 com autenticação local, sessão persistida, carrinho
 
 ## Tecnologias
 
-- Expo SDK 52
+- Expo SDK 54
 - React Native
-- TypeScript
+- JavaScript
 - Expo Router
 - Context API
 - AsyncStorage
@@ -65,31 +65,28 @@ Depois, abra o app pelo QR Code no Expo Go ou pelo emulador.
 .
 ├── app/
 │   ├── (auth)/
-│   │   ├── _layout.tsx
-│   │   ├── cadastro.tsx
-│   │   └── login.tsx
+│   │   ├── _layout.jsx
+│   │   ├── cadastro.jsx
+│   │   └── login.jsx
 │   ├── (tabs)/
-│   │   ├── _layout.tsx
-│   │   ├── index.tsx
-│   │   ├── pedidos.tsx
-│   │   └── perfil.tsx
-│   ├── _layout.tsx
-│   └── index.tsx
+│   │   ├── _layout.jsx
+│   │   ├── index.jsx
+│   │   ├── pedidos.jsx
+│   │   └── perfil.jsx
+│   └── _layout.jsx
 ├── components/
-│   ├── Button.tsx
-│   ├── EmptyState.tsx
-│   └── Input.tsx
+│   ├── Button.jsx
+│   ├── EmptyState.jsx
+│   └── Input.jsx
 ├── constants/
-│   └── theme.ts
+│   └── theme.js
 ├── context/
-│   ├── AppDataContext.tsx
-│   └── AuthContext.tsx
+│   ├── AppDataContext.jsx
+│   └── AuthContext.jsx
 ├── data/
-│   └── products.ts
-├── types/
-│   └── app.ts
+│   └── products.js
 └── utils/
-    └── format.ts
+    └── format.js
 ```
 
 ## Context API

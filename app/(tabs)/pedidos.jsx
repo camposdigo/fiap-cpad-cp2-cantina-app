@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
-import React, { useState } from "react"; // Adicionado useState
-import { FlatList, StyleSheet, Text, View, TouchableOpacity, Modal, Alert } from "react-native";
+import { useState } from "react";
+import { FlatList, StyleSheet, Text, View, TouchableOpacity, Modal } from "react-native";
 import { EmptyState } from "../../components/EmptyState";
 import { colors } from "../../constants/theme";
 import { useAppData } from "../../context/AppDataContext";
@@ -11,15 +11,17 @@ export default function PedidosScreen() {
   
   const [pixModalVisible, setPixModalVisible] = useState(false);
   const [selectedOrderTotal, setSelectedOrderTotal] = useState(0);
+  const [paymentMessage, setPaymentMessage] = useState("");
 
-  const handleOpenPix = (total: number) => {
+  const handleOpenPix = (total) => {
     setSelectedOrderTotal(total);
+    setPaymentMessage("");
     setPixModalVisible(true);
   };
 
   const handleConfirmarPagamento = () => {
     setPixModalVisible(false);
-    Alert.alert("Sucesso!", "Pagamento Pix confirmado. Retire seu pedido no balcão!");
+    setPaymentMessage("Pagamento Pix confirmado. Retire seu pedido no balcao.");
   };
 
   return (
@@ -29,6 +31,12 @@ export default function PedidosScreen() {
         <Text style={styles.subtitle}>
           Historico persistido localmente com AsyncStorage.
         </Text>
+        {paymentMessage ? (
+          <View style={styles.paymentSuccess}>
+            <Ionicons name="checkmark-circle" size={16} color={colors.success} />
+            <Text style={styles.paymentSuccessText}>{paymentMessage}</Text>
+          </View>
+        ) : null}
       </View>
 
       {orders.length === 0 ? (
@@ -73,12 +81,11 @@ export default function PedidosScreen() {
                 <Text style={styles.total}>{formatCurrency(item.total)}</Text>
               </View>
 
-              {}
               <TouchableOpacity 
                 style={styles.pixButton} 
                 onPress={() => handleOpenPix(item.total)}
               >
-                <Ionicons name="qr-code-outline" size={18} color={colors.surface} />
+                <Ionicons name="qr-code-outline" size={18} color={colors.lightText} />
                 <Text style={styles.pixButtonText}>Pagar com PIX</Text>
               </TouchableOpacity>
             </View>
@@ -86,7 +93,6 @@ export default function PedidosScreen() {
         />
       )}
 
-      {}
       <Modal
         visible={pixModalVisible}
         transparent={true}
@@ -137,6 +143,22 @@ const styles = StyleSheet.create({
     color: colors.muted,
     fontSize: 15,
     lineHeight: 21
+  },
+  paymentSuccess: {
+    alignItems: "center",
+    backgroundColor: "#0E2017",
+    borderColor: colors.success,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 8,
+    marginTop: 12,
+    padding: 12
+  },
+  paymentSuccessText: {
+    color: colors.success,
+    flex: 1,
+    fontSize: 13,
+    fontWeight: "800"
   },
   list: {
     gap: 12,
@@ -227,7 +249,7 @@ const styles = StyleSheet.create({
     marginTop: 8
   },
   pixButtonText: {
-    color: colors.surface,
+    color: colors.lightText,
     fontWeight: '900',
     fontSize: 14,
     textTransform: 'uppercase'
