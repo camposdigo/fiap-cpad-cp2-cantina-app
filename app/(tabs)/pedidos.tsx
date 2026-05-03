@@ -1,5 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react"; // Adicionado useState
+import { FlatList, StyleSheet, Text, View, TouchableOpacity, Modal, Alert } from "react-native";
 import { EmptyState } from "../../components/EmptyState";
 import { colors } from "../../constants/theme";
 import { useAppData } from "../../context/AppDataContext";
@@ -7,6 +8,19 @@ import { formatCurrency, formatDateTime } from "../../utils/format";
 
 export default function PedidosScreen() {
   const { orders } = useAppData();
+  
+  const [pixModalVisible, setPixModalVisible] = useState(false);
+  const [selectedOrderTotal, setSelectedOrderTotal] = useState(0);
+
+  const handleOpenPix = (total: number) => {
+    setSelectedOrderTotal(total);
+    setPixModalVisible(true);
+  };
+
+  const handleConfirmarPagamento = () => {
+    setPixModalVisible(false);
+    Alert.alert("Sucesso!", "Pagamento Pix confirmado. Retire seu pedido no balcão!");
+  };
 
   return (
     <View style={styles.page}>
@@ -58,10 +72,47 @@ export default function PedidosScreen() {
                 <Text style={styles.totalLabel}>Total</Text>
                 <Text style={styles.total}>{formatCurrency(item.total)}</Text>
               </View>
+
+              {}
+              <TouchableOpacity 
+                style={styles.pixButton} 
+                onPress={() => handleOpenPix(item.total)}
+              >
+                <Ionicons name="qr-code-outline" size={18} color={colors.surface} />
+                <Text style={styles.pixButtonText}>Pagar com PIX</Text>
+              </TouchableOpacity>
             </View>
           )}
         />
       )}
+
+      {}
+      <Modal
+        visible={pixModalVisible}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={() => setPixModalVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>Pagamento PIX</Text>
+            <Text style={styles.modalTotal}>Valor: {formatCurrency(selectedOrderTotal)}</Text>
+            
+            <View style={styles.qrPlaceholder}>
+              <Ionicons name="qr-code" size={150} color={colors.text} />
+              <Text style={styles.copyPasteText}>00020126580014BR.GOV.BCB.PIX...</Text>
+            </View>
+
+            <TouchableOpacity style={styles.confirmButton} onPress={handleConfirmarPagamento}>
+              <Text style={styles.confirmButtonText}>Confirmar Pagamento</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => setPixModalVisible(false)}>
+              <Text style={styles.cancelText}>Cancelar</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -165,5 +216,71 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: 20,
     fontWeight: "900"
+  },
+  pixButton: {
+    backgroundColor: colors.primary,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    paddingVertical: 12,
+    marginTop: 8
+  },
+  pixButtonText: {
+    color: colors.surface,
+    fontWeight: '900',
+    fontSize: 14,
+    textTransform: 'uppercase'
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.8)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20
+  },
+  modalContent: {
+    backgroundColor: colors.surface,
+    padding: 24,
+    width: '100%',
+    alignItems: 'center',
+    gap: 16
+  },
+  modalTitle: {
+    color: colors.text,
+    fontSize: 24,
+    fontWeight: '900'
+  },
+  modalTotal: {
+    color: colors.primary,
+    fontSize: 18,
+    fontWeight: '700'
+  },
+  qrPlaceholder: {
+    backgroundColor: '#fff',
+    padding: 10,
+    alignItems: 'center',
+    gap: 10
+  },
+  copyPasteText: {
+    fontSize: 10,
+    color: '#666',
+    textAlign: 'center'
+  },
+  confirmButton: {
+    backgroundColor: colors.success,
+    width: '100%',
+    padding: 16,
+    alignItems: 'center'
+  },
+  confirmButtonText: {
+    color: colors.surface,
+    fontWeight: '900',
+    fontSize: 16
+  },
+  cancelText: {
+    color: colors.muted,
+    fontWeight: '700',
+    marginTop: 8
   }
 });
